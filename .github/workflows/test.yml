@@ -23,7 +23,7 @@ jobs:
           cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Debug -DENABLE_TESTING=ON
           cmake --build . -- -j$(nproc)
           ctest
-          cmake --build build --target coverage
+          cmake --build . --target coverage
           gcovr --remove coverage.info "/usr/*" "*/deps/*" "*/test/*" -o coverage.info
           curl -Os https://uploader.codecov.io/latest/linux/codecov
           chmod +x codecov
