@@ -1,0 +1,29 @@
+name: Test
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    types: [ opened, synchronize, reopened, edited ]
+
+jobs:
+  build-coverage:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run tests with coverage options
+        run: sudo apt install gcovr -y
+      - name: Run tests with coverage options
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        run: |
+          mkdir build
+          cd build
+          cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Debug -DENABLE_TESTING=ON
+          cmake --build . -- -j$(nproc)
+          ctest
+          cmake --build build --target coverage
+          gcovr --remove coverage.info "/usr/*" "*/deps/*" "*/test/*" -o coverage.info
+          curl -Os https://uploader.codecov.io/latest/linux/codecov
+          chmod +x codecov
+          ./codecov -t ${CODECOV_TOKEN} -f build/coverage.info
