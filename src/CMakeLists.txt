@@ -5,6 +5,7 @@ set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 
 include(../cmake/cpputest_helper.cmake)
+include(../cmake/fff_helper.cmake)
 
 option(ENABLE_TESTING "Enable unit-testing" OFF)
 
@@ -21,7 +22,13 @@ FetchContent_Declare(
 )
 # Set this to ON if you want to have the CppUTests in your project as well.
 set(TESTS OFF CACHE BOOL "Switch off CppUTest Test build")
-FetchContent_MakeAvailable(CppUTest)
+FetchContent_Declare(
+        fff
+        GIT_REPOSITORY https://github.com/meekrosoft/fff.git
+        GIT_TAG master
+)
+
+FetchContent_MakeAvailable(CppUTest fff)
 
 find_package(CppUTest REQUIRED)
 
