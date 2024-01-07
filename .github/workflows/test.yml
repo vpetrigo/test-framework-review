@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install dependencies
-        run: sudo apt install cmake gcovr ninja -y
+        run: sudo apt install cmake gcovr ninja-build -y
       - name: Run tests with coverage options
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
