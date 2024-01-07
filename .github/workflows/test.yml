@@ -24,7 +24,6 @@ jobs:
           cmake --build . -- -j$(nproc)
           ctest
           cmake --build . --target coverage
-          gcovr --remove coverage.info "/usr/*" "*/deps/*" "*/test/*" -o coverage.info
           curl -Os https://uploader.codecov.io/latest/linux/codecov
           chmod +x codecov
           ./codecov -t ${CODECOV_TOKEN} -f build/coverage.info
