@@ -1,0 +1,8 @@
+# IDEA
+/.idea/
+
+# CMake
+**/*build*/
+
+# Ceedling
+**/build/
