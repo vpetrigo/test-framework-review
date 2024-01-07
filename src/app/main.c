@@ -6,7 +6,7 @@
 
 #include "temperature.h"
 
-#if defined(_WIN32) || defined(MINGW)
+#if defined(_WIN32) || defined(__MINGW32__)
 #include <windows.h>
 #elif defined(__linux__)
 #include <unistd.h>
@@ -14,7 +14,7 @@
 
 #include <stdio.h>
 
-#if defined(_WIN32) || defined(MINGW)
+#if defined(_WIN32) || defined(__MINGW32__)
 #define sleep(x) Sleep(x * 1000)
 #endif
 
