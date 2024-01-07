@@ -32,6 +32,15 @@ FetchContent_MakeAvailable(CppUTest fff)
 
 find_package(CppUTest REQUIRED)
 
+if (ENABLE_TESTING)
+    add_compile_options(--coverage)
+    add_link_options(--coverage)
+endif ()
+
 add_subdirectory(hal/)
 add_subdirectory(sensors/)
 add_subdirectory(app/)
+
+add_custom_target(coverage
+        COMMAND gcovr -r ${CMAKE_CURRENT_LIST_DIR} -e ".*_test.cpp" -e ".*main.c" -e ".*hal" --txt coverage.info
+)
