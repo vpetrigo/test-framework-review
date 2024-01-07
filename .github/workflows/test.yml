@@ -11,12 +11,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Run tests with coverage options
-        run: sudo apt install gcovr -y
+      - name: Install dependencies
+        run: sudo apt install cmake gcovr -y
       - name: Run tests with coverage options
         env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
         run: |
+          cd src
           mkdir build
           cd build
           cmake .. -G Ninja -DCMAKE_BUILD_TYPE=Debug -DENABLE_TESTING=ON
