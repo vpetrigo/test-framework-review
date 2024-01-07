@@ -42,5 +42,5 @@ add_subdirectory(sensors/)
 add_subdirectory(app/)
 
 add_custom_target(coverage
-        COMMAND gcovr -r ${CMAKE_CURRENT_LIST_DIR} -e ".*_test.cpp" -e ".*main.c" -e ".*hal" --json coverage.info
+        COMMAND gcovr -r ${CMAKE_CURRENT_LIST_DIR} -e ".*_test.cpp" -e ".*main.c" -e ".*hal" -x coverage.info
 )
