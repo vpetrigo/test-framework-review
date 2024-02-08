@@ -1,7 +1,7 @@
 /**
  * \file
  * \brief
- * \author
+ * \author Vladimir Petrigo
  */
 
 #include "adc.h"
