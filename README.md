@@ -5,7 +5,7 @@ This project is an attempt to check different test frameworks for C language, ch
 There are several frameworks used:
 - [Ceedling][ceedling]
 - [CppUTest][cpputest]
-- [FFF][fff] (not a testing framework, but mock)
+- [FFF][fff] (not a testing, but mock framework)
 
 [ceedling]: https://github.com/ThrowTheSwitch/Ceedling
 [cpputest]: https://github.com/cpputest/cpputest/tree/master
